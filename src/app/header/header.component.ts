@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService} from '../data.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  private count: Number;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.count = this.dataService.getCount();    
   }
 
 }

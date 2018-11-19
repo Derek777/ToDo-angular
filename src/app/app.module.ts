@@ -1,14 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectComponent } from './project/project.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
-import {DataService} from './data.service';
+import { DataService} from './data.service';
+import { LocalStorageService } from './local-storage.service';
+import { AddFormComponent } from './add-form/add-form.component';
+import { StagesComponent } from './stages/stages.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -17,13 +24,19 @@ import {DataService} from './data.service';
     FooterComponent,
     ProjectListComponent,
     ProjectComponent,
-    TodoItemComponent
+    TodoItemComponent,
+    AddFormComponent,
+    StagesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule 
   ],
-  providers: [DataService],
+  providers: [
+    DataService,
+    LocalStorageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
