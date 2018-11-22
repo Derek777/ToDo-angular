@@ -1,58 +1,78 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService} from '../data.service';
-
-
+import { MyValidators } from '../validators'
 
 @Component({
   selector: 'app-add-form',
   templateUrl: './add-form.component.html',
   styleUrls: ['./add-form.component.css']
 })
+
 export class AddFormComponent implements OnInit {  
+
+  private newProjectForm: FormGroup;
+  private submitted = false;
+  private show = false;
+  private stages; 
 
   constructor(
     private router: Router,
-    private data: DataService    
-    ) { }
-  private show = false;
-  private stages;   
-  
-  profileForm = new FormGroup({
-    projectTitle: new FormControl('New Project'),
-    projectTime: new FormControl('24'),
-    projectPriority: new FormControl('1'),
-    newStage: new FormControl('new stage')
-  });
+    private _data: DataService ,
+    private formBuilder: FormBuilder, 
+    private myValidator: MyValidators
+  ) { }
 
-  // this.profileForm.projectTitle.valueChanges.subscribe((value) => console.log(value));
- 
   ngOnInit() {
-    this.stages = this.data.basicStages();       
-  }  
+    this.stages = this._data.basicStages();    
+    this.newProjectForm = this.formBuilder.group({
+      projectTitle: ['New Project', [
+        Validators.required, 
+        Validators.minLength(3), 
+        this.myValidator.emptyValidator]
+      ],
+      projectTime: ['24', [
+        Validators.required, 
+        Validators.min(1)]
+      ],
+      projectPriority: ['1', Validators.required],
+      newStage: ['new stage']
+    });   
+  }   
+
+  get f() { 
+    console.log(this.newProjectForm.controls)
+    return this.newProjectForm.controls;
+    ;
+   } 
+   
+   getactiv(){
+     return false
+   }
   
   toglle(){
     this.show = !this.show;
     if(!this.show){
-      this.stages.push(this.profileForm.controls.newStage.value);
+      this.stages.push(this.newProjectForm.controls.newStage.value);
     }    
   }
  
   onChanged(title){    
     for(let i = 0; i<this.stages.length; i++){      
       if(this.stages[i] === title){                
-       delete this.stages[i];
-       console.log(i);
+       delete this.stages[i];      
        return;
       }
     }   
   } 
 
-  submit() {
-    alert("ss");  
-    // this.data.show(this.ffff);
-    // this.data.someMethod();
+  onSubmit() {
+    this.submitted = true;
+    if (this.newProjectForm.invalid) {
+      return;
+    }
+    alert("ss");      
     this.router.navigate(['/']);
   }
 

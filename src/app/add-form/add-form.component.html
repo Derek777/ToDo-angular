@@ -1,7 +1,11 @@
-<form [formGroup]="profileForm" (ngSubmit)="submit()">
+<form [formGroup]="newProjectForm" (ngSubmit)="onSubmit()">
   <label>
       Project Title:
       <input type="text" formControlName="projectTitle">
+      <div *ngIf="f.projectTitle.errors['minlenth']">
+        <p>Мало символів</p>
+          <div *ngIf="f.projectTitle.errors.empty">Назвіть свій проект</div>
+      </div>
   </label>
   <br/>
   <label>
@@ -20,16 +24,18 @@
       </select>
   </label>
   <p>Етапи проекту:</p>
-  <app-stages *ngFor="let stage of stages"   
+  <div *ngFor="let stage of stages">
+    <app-stages *ngIf="stage"
     [stage] = "stage"
     (onChanged)="onChanged($event)"
-  ></app-stages>
+    ></app-stages> 
+  </div>      
   <br/>
   <input formControlName="newStage" type="text" *ngIf="show">
   <br/>        
   <button type="button" (click)="toglle()">{{show ? 'Створити новий етап проекту' : 'Додати новий етап проекту'}}</button>   
   <br/>
-  <button type="submit" [disabled]=!profileForm.valid>Create project</button>
+  <button type="submit" [disabled]=!newProjectForm.valid>Create project</button>
   <br/>
 </form>
 <button routerLink="/">To Main</button>

@@ -17,6 +17,8 @@ import { StagesComponent } from './stages/stages.component';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,7 @@ import { StagesComponent } from './stages/stages.component';
     ProjectComponent,
     TodoItemComponent,
     AddFormComponent,
-    StagesComponent
+    StagesComponent    
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { StagesComponent } from './stages/stages.component';
   ],
   providers: [
     DataService,
-    LocalStorageService
+    LocalStorageService,
+    
   ],
   bootstrap: [AppComponent]
 })
