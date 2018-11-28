@@ -25,14 +25,18 @@ export class DataService {
     console.log(item);
   }
 
-  basicStages(){   
-    return [
+  basicStages():string[]{   
+    return new Array(
       "start of the project",
       "work on the project",
       "end of the project"
-    ]    
+    )    
   }
   
+  createProject(newProject, stages){
+    console.log(newProject);
+    console.log(stages);
+  }
   add(){}//
   delete(){}//
   get(){}//

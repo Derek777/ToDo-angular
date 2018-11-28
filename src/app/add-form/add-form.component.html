@@ -1,18 +1,25 @@
 <form [formGroup]="newProjectForm" (ngSubmit)="onSubmit()">
   <label>
       Project Title:
-      <input type="text" formControlName="projectTitle">
-      <div *ngIf="f.projectTitle.errors['minlenth']">
-        <p>Мало символів</p>
-          <div *ngIf="f.projectTitle.errors.empty">Назвіть свій проект</div>
-      </div>
+      <input type="text" formControlName="projectTitle" 
+             [ngClass]="{alert: f.projectTitle.invalid}">
+      <div *ngIf="f.projectTitle.errors" class="alert">
+        <p *ngIf="!f.projectTitle.errors.empty && f.projectTitle.errors.minlength">Мало символів</p>
+        <p *ngIf="f.projectTitle.errors.empty">Назвіть свій проект</p>   
+        <p *ngIf="f.projectTitle.errors.maxlength">Надто довга назва</p>       
+      </div>      
   </label>
   <br/>
   <label>
       Hour for realization of the project:
       <input type="text" formControlName="projectTime">
-  </label>
-  <br/>
+      <div *ngIf="f.projectTime.errors" class="alert">      
+        <p *ngIf="f.projectTime.errors.required">Введіть кількість годин</p>
+        <p *ngIf="f.projectTime.errors.maxlength && !f.projectTime.errors.pattern">Не більше 999 годин</p>
+        <p *ngIf="f.projectTime.errors.pattern">Вводьте тільки цифри</p>
+      </div>  
+  </label> 
+  <br/> 
   <label>
       Priority of the project:
       <select formControlName="projectPriority">
@@ -31,11 +38,20 @@
     ></app-stages> 
   </div>      
   <br/>
-  <input formControlName="newStage" type="text" *ngIf="show">
+  <input formControlName="newStage" type="text" *ngIf="show" id="ttt">
+  <div *ngIf="f.newStage.errors" class="alert">
+      <p *ngIf="!f.newStage.errors.empty && f.newStage.errors.minlength">Мало символів</p>
+      <p *ngIf="f.newStage.errors.empty">Назвіть свій етап проекту</p>   
+      <p *ngIf="f.newStage.errors.maxlength">Надто довга назва</p>   
+  </div> 
   <br/>        
-  <button type="button" (click)="toglle()">{{show ? 'Створити новий етап проекту' : 'Додати новий етап проекту'}}</button>   
+  <button type="button" [disabled]=f.newStage.errors (click)="toglle()">{{show ? 'Створити новий етап проекту' : 'Додати новий етап проекту'}}</button>    
   <br/>
   <button type="submit" [disabled]=!newProjectForm.valid>Create project</button>
-  <br/>
+  <br/> 
 </form>
 <button routerLink="/">To Main</button>
+<!-- <p>Form value: {{ newProjectForm.value | json }}</p> -->
+<!-- <p>Form status: {{ newProjectForm.status | json }}</p> -->
+<!-- <p>Form status: {{ newProjectForm.controls['projectTitle'].errors | json }}</p> -->
+<!-- <p>Form status: {{ newProjectForm.controls['newStage'].errors | json }}</p> -->

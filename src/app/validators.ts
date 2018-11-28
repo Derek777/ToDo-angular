@@ -7,9 +7,9 @@ import { FormControl } from '@angular/forms';
 
 export class MyValidators {
     emptyValidator(control: FormControl){
-        const pattern = /^[\s]+$/
+        const pattern = /^\s*$/
         if(pattern.test(control.value)){         
-            console.log(control);
+            // console.log(control);
             return {empty: true}
         }
         return null;    

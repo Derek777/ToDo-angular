@@ -15,7 +15,7 @@ export class AddFormComponent implements OnInit {
   private newProjectForm: FormGroup;
   private submitted = false;
   private show = false;
-  private stages; 
+  private stages: Array<string>; 
 
   constructor(
     private router: Router,
@@ -25,31 +25,35 @@ export class AddFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.stages = this._data.basicStages();    
+    this.stages = this._data.basicStages();   
+    
     this.newProjectForm = this.formBuilder.group({
       projectTitle: ['New Project', [
         Validators.required, 
         Validators.minLength(3), 
-        this.myValidator.emptyValidator]
+        Validators.maxLength(30),        
+        this.myValidator.emptyValidator]      
       ],
       projectTime: ['24', [
-        Validators.required, 
-        Validators.min(1)]
+        Validators.required,         
+        Validators.maxLength(3),
+        Validators.pattern("^[0-9]+$")]     
       ],
       projectPriority: ['1', Validators.required],
-      newStage: ['new stage']
-    });   
-  }   
-
+      newStage: ['new stage', [
+        Validators.required,
+        Validators.minLength(3), 
+        Validators.maxLength(300),        
+        this.myValidator.emptyValidator] 
+      ]
+     });   
+    }   
+  
   get f() { 
-    console.log(this.newProjectForm.controls)
-    return this.newProjectForm.controls;
-    ;
-   } 
-   
-   getactiv(){
-     return false
-   }
+    // console.log(this.newProjectForm.controls)
+    return this.newProjectForm.controls;    
+   }   
+ 
   
   toglle(){
     this.show = !this.show;
@@ -61,7 +65,7 @@ export class AddFormComponent implements OnInit {
   onChanged(title){    
     for(let i = 0; i<this.stages.length; i++){      
       if(this.stages[i] === title){                
-       delete this.stages[i];      
+       this.stages.splice(i, 1);   
        return;
       }
     }   
@@ -72,7 +76,8 @@ export class AddFormComponent implements OnInit {
     if (this.newProjectForm.invalid) {
       return;
     }
-    alert("ss");      
+    this._data.createProject(this.newProjectForm.value, this.stages);
+    // alert("ss");      
     this.router.navigate(['/']);
   }
 
