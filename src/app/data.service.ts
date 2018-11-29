@@ -11,10 +11,11 @@ import { projection } from '@angular/core/src/render3/instructions';
 })
 export class DataService {
 
-  constructor(private LS: LocalStorageService) { }
-  private count: Number = 5;
-  getCount() {
-    return this.count;  // треба дописати
+  constructor(private DB: LocalStorageService) { }
+  // private count: Number = 5;
+
+  getCount():Number {
+     return this.DB.lenght();    
   }
 
   exist(){
@@ -36,6 +37,11 @@ export class DataService {
   createProject(newProject, stages){
     console.log(newProject);
     console.log(stages);
+    newProject.newStage = stages
+    console.log(newProject);
+
+    this.DB.set(newProject.projectTitle, newProject);
+    
   }
   add(){}//
   delete(){}//
