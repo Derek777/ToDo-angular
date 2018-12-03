@@ -4,19 +4,25 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LocalStorageService {
+  
 
   constructor() { }
 
   lenght():Number{
-    return localStorage.length
+    console.log('hello from LS');
+    return localStorage.length;
   }
 
-  set(key: string, data: any): void {
-    try {
-      localStorage.setItem(key, JSON.stringify(data));
-    } catch (e) {
-      console.error('Error saving to localStorage', e);
-    }
+  set(key: string, data: any): Promise<any> {
+    return new Promise((resolve, reject) => { 
+      try {
+        localStorage.setItem(key, JSON.stringify(data));
+        resolve();
+      } catch (e) {
+        console.error('Error saving to localStorage', e);
+        reject();
+      }
+    });
   }
 
   get(key: string) {

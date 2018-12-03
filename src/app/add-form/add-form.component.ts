@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService} from '../data.service';
@@ -21,8 +21,11 @@ export class AddFormComponent implements OnInit {
     private router: Router,
     private _data: DataService ,
     private formBuilder: FormBuilder, 
-    private myValidator: MyValidators
-  ) { }
+    private myValidator: MyValidators,
+    private cd: ChangeDetectorRef
+  ) {
+   
+   }
 
   ngOnInit() {
     this.stages = this._data.basicStages();   
@@ -79,6 +82,7 @@ export class AddFormComponent implements OnInit {
     this._data.createProject(this.newProjectForm.value, this.stages);
     // alert("ss");      
     this.router.navigate(['/']);
+    this.cd.detectChanges();
   }
 
 }

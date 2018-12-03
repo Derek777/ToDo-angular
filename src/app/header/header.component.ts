@@ -8,11 +8,25 @@ import { DataService} from '../data.service';
 })
 export class HeaderComponent implements OnInit {
   private count: Number;
+  private location;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.count = this.dataService.getCount();    
+    this.count = this.dataService.getCount();  
+    // this.location = window.location.pathname;  
+    // console.log(this.location);   
+
+    this.dataService.onChange((lenght) => {
+      // debugger;
+      this.count = lenght;
+    });
   }
+
+  getCount(){
+    this.count = this.dataService.getCount();
+  }
+
+  
 
 }

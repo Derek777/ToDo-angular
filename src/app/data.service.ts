@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {LocalStorageService} from './local-storage.service';
 import { projection } from '@angular/core/src/render3/instructions';
+import { Observable, Observer } from 'rxjs';
+import { Subject } from 'rxjs';
 
 // export interface Project {
 //   title: string;  
@@ -10,12 +12,19 @@ import { projection } from '@angular/core/src/render3/instructions';
   providedIn: 'root'
 })
 export class DataService {
+ 
+  private callback;
 
   constructor(private DB: LocalStorageService) { }
   // private count: Number = 5;
 
-  getCount():Number {
+  getCount() {    
+    // return this.DB.len.subscribe()
      return this.DB.lenght();    
+  }
+
+  onChange (callback) {
+    this.callback = callback;
   }
 
   exist(){
@@ -35,13 +44,15 @@ export class DataService {
   }
   
   createProject(newProject, stages){
-    console.log(newProject);
-    console.log(stages);
+    // console.log(newProject);
+    // console.log(stages);
     newProject.newStage = stages
     console.log(newProject);
-
-    this.DB.set(newProject.projectTitle, newProject);
-    
+    this.DB.set(newProject.projectTitle, newProject).then(function (event) {
+      debugger;
+      this.callback(this.DB.lenght());
+    }.bind(this));
+   
   }
   add(){}//
   delete(){}//
