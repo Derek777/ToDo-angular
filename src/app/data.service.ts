@@ -5,18 +5,14 @@ import { Observable, Observer, BehaviorSubject } from 'rxjs';
 import { Subject } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 
-// export interface Project {
-//   title: string;  
-// }
-
 @Injectable({
   providedIn: 'root'
 })
 export class DataService implements OnInit {
  
   private callback;
-  private _paramSubject = new BehaviorSubject<any>({} as any);
-  public _params = this._paramSubject.asObservable();
+  private projectsObject = new BehaviorSubject<any>({} as any);
+  public projects = this.projectsObject.asObservable();
   
 
   constructor(
@@ -25,15 +21,11 @@ export class DataService implements OnInit {
 
   ngOnInit() {
     
-  }  
-  // private count: Number = 5;
- 
+  }    
 
-  
-
-  getCount() {    
-    // return this.DB.len.subscribe()
-     return this.DB.lenght();    
+  getCount() {     
+    console.log(this.DB.lenght());
+     return this.DB.lenght();    //jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
   }
 
   onChange (callback) {
@@ -63,11 +55,17 @@ export class DataService implements OnInit {
     // console.log(stages);
     newProject.newStage = stages
     console.log(newProject);
-    this.DB.set(newProject.projectTitle, newProject).then(function (event) {     
-      this.callback(this.DB.lenght());
+    this.DB.set(newProject.projectTitle, newProject).then(function (event) {  
+      this.projectsObject.next(this.getCount());
+      // this.callback(this.DB.lenght());
     }.bind(this));
-   this._paramSubject.next(this.getCount())
+  //  this.projectsObject.next(this.getCount())
   }
+
+
+
+
+
   add(){}//
   delete(){}//
   get(){}//
