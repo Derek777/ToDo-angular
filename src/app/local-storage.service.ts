@@ -13,17 +13,18 @@ export class LocalStorageService {
      return localStorage.length;
   }
 
-  set(key: string, data: any): Promise<any> {
-    return new Promise((resolve, reject) => { 
+  set(key: string, data: any) {
+   
       try {
         localStorage.setItem(key, JSON.stringify(data));
-        resolve();
+        
       } catch (e) {
         console.error('Error saving to localStorage', e);
-        reject();
+       
       }
-    });
+    
   }
+ 
 
   get(key: string) {
     try {

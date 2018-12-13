@@ -13,18 +13,17 @@ export class DataService implements OnInit {
   private callback;
   private projectsObject = new BehaviorSubject<any>({} as any);
   public projects = this.projectsObject.asObservable();
+  private name = 'My_';
   
 
-  constructor(
-    private DB: LocalStorageService         
-    ) { }
+  constructor(private DB: LocalStorageService) { }
 
   ngOnInit() {
     
   }    
 
   getCount() {     
-    console.log(this.DB.lenght());
+    // console.log(this.DB.lenght());
      return this.DB.lenght();    //jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
   }
 
@@ -50,16 +49,11 @@ export class DataService implements OnInit {
     )    
   }
   
-  createProject(newProject, stages){
-    // console.log(newProject);
-    // console.log(stages);
-    newProject.newStage = stages
-    console.log(newProject);
-    this.DB.set(newProject.projectTitle, newProject).then(function (event) {  
-      this.projectsObject.next(this.getCount());
-      // this.callback(this.DB.lenght());
-    }.bind(this));
-  //  this.projectsObject.next(this.getCount())
+  createProject(newProject, stages){    
+    newProject.newStage = stages.map(i => i.trim())
+    newProject.projectTitle = newProject.projectTitle.trim();    
+    this.DB.set(this.name + newProject.projectTitle, newProject)
+    this.projectsObject.next(this.getCount()); 
   }
 
 
