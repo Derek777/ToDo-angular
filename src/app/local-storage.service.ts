@@ -9,8 +9,8 @@ export class LocalStorageService {
   constructor() { }
 
   lenght():Number{
-    console.log('hello from LS');
-    return localStorage.length;
+    // console.log('hello from LS');
+     return localStorage.length;
   }
 
   set(key: string, data: any): Promise<any> {

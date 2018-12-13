@@ -22,7 +22,7 @@ export class AddFormComponent implements OnInit {
     private _data: DataService ,
     private formBuilder: FormBuilder, 
     private myValidator: MyValidators,
-    private cd: ChangeDetectorRef
+    // private cd: ChangeDetectorRef
   ) {
    
    }
@@ -82,7 +82,7 @@ export class AddFormComponent implements OnInit {
     this._data.createProject(this.newProjectForm.value, this.stages);
     // alert("ss");      
     this.router.navigate(['/']);
-    this.cd.detectChanges();
+    // this.cd.detectChanges();
   }
 
 }
