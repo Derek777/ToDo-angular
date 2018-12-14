@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService} from '../data.service';
 import { MyValidators } from '../validators'
@@ -13,29 +13,28 @@ import { MyValidators } from '../validators'
 export class AddFormComponent implements OnInit {  
 
   private newProjectForm: FormGroup;
-  private submitted = false;      //??????
+  // private submitted = false;      //??????
   private show = false;
   private stages: Array<string>; 
 
   constructor(
     private router: Router,
-    private _data: DataService ,
+    private data: DataService ,
     private formBuilder: FormBuilder, 
-    private myValidator: MyValidators,
-    // private cd: ChangeDetectorRef
-  ) {
-   
-   }
+    private myValidator: MyValidators   
+  ) {}
 
   ngOnInit() {
-    this.stages = this._data.basicStages();   
+    this.stages = this.data.basicStages();   
     
     this.newProjectForm = this.formBuilder.group({
       projectTitle: ['New Project', [
         Validators.required, 
         Validators.minLength(3), 
         Validators.maxLength(30),        
-        this.myValidator.emptyValidator]      
+        this.myValidator.emptyValidator        
+      ],
+      [this.myValidator.checkTitle.bind(this)]      
       ],
       projectTime: ['24', [
         Validators.required,         
@@ -49,14 +48,13 @@ export class AddFormComponent implements OnInit {
         Validators.maxLength(300),        
         this.myValidator.emptyValidator] 
       ]
-     });   
-    }   
+    });   
+  }   
   
-  get f() { 
-    // console.log(this.newProjectForm.controls)
+  get f() {     
+    // console.log(this.newProjectForm.controls );
     return this.newProjectForm.controls;    
-   }   
- 
+  }  
   
   toglle(){
     this.show = !this.show;
@@ -75,14 +73,14 @@ export class AddFormComponent implements OnInit {
   } 
 
   onSubmit() {
-    this.submitted = true;  //????
+    // this.submitted = true;  //????
     if (this.newProjectForm.invalid) {
       return;
     }
     // let stages = this.stages.map(i =>{
     //   return i.trim();
     // })
-    this._data.createProject(this.newProjectForm.value, this.stages);
+    this.data.createProject(this.newProjectForm.value, this.stages);
     // alert("ss");      
     this.router.navigate(['/']);
     // this.cd.detectChanges();

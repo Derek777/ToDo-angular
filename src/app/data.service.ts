@@ -13,7 +13,7 @@ export class DataService implements OnInit {
   private callback;
   private projectsObject = new BehaviorSubject<any>({} as any);
   public projects = this.projectsObject.asObservable();
-  private name = 'My_';
+  private name: string = 'My_';
   
 
   constructor(private DB: LocalStorageService) { }
@@ -33,8 +33,10 @@ export class DataService implements OnInit {
     console.log(callback );
   }
 
-  exist(){
-    //реалізувати
+  getTitle (title: string) {
+    // let y = this.name
+    console.log(title);
+    return this.DB.get(this.name + title);
   }
 
   show(item){

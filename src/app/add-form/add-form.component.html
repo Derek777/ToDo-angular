@@ -6,7 +6,8 @@
       <div *ngIf="f.projectTitle.errors" class="alert">
         <p *ngIf="!f.projectTitle.errors.empty && f.projectTitle.errors.minlength">Мало символів</p>
         <p *ngIf="f.projectTitle.errors.empty">Назвіть свій проект</p>   
-        <p *ngIf="f.projectTitle.errors.maxlength">Надто довга назва</p>       
+        <p *ngIf="f.projectTitle.errors.maxlength">Надто довга назва</p>   
+        <p *ngIf="f.projectTitle.errors.checkTitle">Проект з такою назвою вже існує</p>     
       </div>      
   </label>
   <br/>
