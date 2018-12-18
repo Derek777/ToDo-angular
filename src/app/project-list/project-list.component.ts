@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { DataService} from '../data.service';
+import { DataService} from '../data.service';
 
 
 
@@ -10,8 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectListComponent implements OnInit { 
 
-  ngOnInit() {
+  private projects;
 
+  constructor(private data: DataService ) { }
+
+  ngOnInit() {
+    this.projects = this.data.getAllTitles();
+    console.log(this.projects);
   }   
 
 }

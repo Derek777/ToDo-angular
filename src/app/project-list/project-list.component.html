@@ -1,4 +1,14 @@
 
-  <button routerLink="/add">+</button>
-
+<div class="projects"> 
+  <div class="card add">
+      <button class=add-btn routerLink="/add">+</button>
+  </div> 
+  <!-- <button routerLink="/add">=></button> -->
+  <div *ngFor="let project of projects">    
+    <div class="card">
+        {{project.projectTitle}}
+        <button routerLink="{{project.projectTitle}}">=></button>
+    </div>
+  </div> 
+</div>
 

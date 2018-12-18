@@ -13,6 +13,15 @@ export class LocalStorageService {
      return localStorage.length;
   }
 
+  getAllTitle(){
+    let arr = [];
+    for ( var i = 0, len = localStorage.length; i < len; ++i ) {
+      // console.log( localStorage.getItem( localStorage.key( i ) ) );
+      arr.push(JSON.parse(localStorage.getItem( localStorage.key( i ) )));      
+    }
+    return arr;
+  }
+
   set(key: string, data: any) {
    
       try {

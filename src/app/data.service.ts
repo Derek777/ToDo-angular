@@ -27,16 +27,20 @@ export class DataService implements OnInit {
      return this.DB.lenght();    //jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
   }
 
-  onChange (callback) {
-    this.callback = callback;
-    console.log(this.callback );
-    console.log(callback );
-  }
+  // onChange (callback) {
+  //   this.callback = callback;
+  //   console.log(this.callback );
+  //   console.log(callback );
+  // }
 
   getTitle (title: string) {
     // let y = this.name
-    console.log(title);
+    // console.log(title);
     return this.DB.get(this.name + title);
+  }
+
+  getAllTitles(){
+    return this.DB.getAllTitle();
   }
 
   show(item){
