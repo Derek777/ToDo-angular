@@ -15,8 +15,15 @@ export class ProjectListComponent implements OnInit {
   constructor(private data: DataService ) { }
 
   ngOnInit() {
+    this.data.projectTitles.subscribe(data => {
+      this.projects = data;
+    })
     this.projects = this.data.getAllTitles();
-    console.log(this.projects);
-  }   
+    // console.log(this.projects);
+  }  
+  
+  deleleProject(projectTitle: string){
+    this.data.deleteProject(projectTitle);   
+  }
 
 }

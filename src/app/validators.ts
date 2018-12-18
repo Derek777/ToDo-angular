@@ -14,16 +14,22 @@ export class MyValidators {
     ) {}
 
     emptyValidator(control: FormControl){       
-        const pattern = /^\s*$/
-        if(pattern.test(control.value)){         
-            // console.log(control);
+        const pattern = /^\s*$/;
+        if(pattern.test(control.value)){                
             return {empty: true}
         }
         return null;    
     }
 
-    checkTitle(control: FormControl): Promise<any> {
-       
+    availableCharacters(control: FormControl){
+        const pattern = /[,!\@#$%^\&*()=+|\\/\\\\]/;
+        if(pattern.test(control.value)){                
+            return {character: true}
+        }
+        return null;  
+    }
+
+    checkTitle(control: FormControl): Promise<any> {       
         return new Promise((resolve, reject) => {
             if(this.data.getTitle(control.value.trim())){
                 resolve({checkTitle: true});

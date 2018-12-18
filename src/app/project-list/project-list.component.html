@@ -2,12 +2,12 @@
 <div class="projects"> 
   <div class="card add">
       <button class=add-btn routerLink="/add">+</button>
-  </div> 
-  <!-- <button routerLink="/add">=></button> -->
+  </div>   
   <div *ngFor="let project of projects">    
     <div class="card">
         {{project.projectTitle}}
-        <button routerLink="{{project.projectTitle}}">=></button>
+        <button routerLink="projects/{{project.projectTitle}}">=></button>
+        <button (click) = deleleProject(project.projectTitle)>Delete</button>
     </div>
   </div> 
 </div>

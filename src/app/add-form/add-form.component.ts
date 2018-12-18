@@ -32,7 +32,8 @@ export class AddFormComponent implements OnInit {
         Validators.required, 
         Validators.minLength(3), 
         Validators.maxLength(30),        
-        this.myValidator.emptyValidator        
+        this.myValidator.emptyValidator,
+        this.myValidator.availableCharacters     
       ],
       [this.myValidator.checkTitle.bind(this)]      
       ],

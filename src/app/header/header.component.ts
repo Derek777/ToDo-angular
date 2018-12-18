@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit() {    
-    this.dataService.projects.subscribe(data => {
+    this.dataService.projectsCount.subscribe(data => {
       this.count = data;
     })
     this.count = this.dataService.getCount(); // number of active projects (0 or number)    

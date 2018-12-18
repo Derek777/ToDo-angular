@@ -22,6 +22,10 @@ export class LocalStorageService {
     return arr;
   }
 
+  deleteProject(projectTitle){
+    localStorage.removeItem(projectTitle);
+  }
+
   set(key: string, data: any) {
    
       try {

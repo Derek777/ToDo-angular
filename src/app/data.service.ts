@@ -9,17 +9,21 @@ import { distinctUntilChanged, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DataService implements OnInit {
- 
-  private callback;
-  private projectsObject = new BehaviorSubject<any>({} as any);
-  public projects = this.projectsObject.asObservable();
   private name: string = 'My_';
+  
+  private projectsCountObject = new BehaviorSubject<any>({} as any); // count in Header
+  public projectsCount = this.projectsCountObject.asObservable();
+
+  private projectTitlesObject = new BehaviorSubject<any>({} as any); //Titlea array in project-list
+  public projectTitles = this.projectTitlesObject.asObservable();
+ 
+  
   
 
   constructor(private DB: LocalStorageService) { }
 
   ngOnInit() {
-    
+   
   }    
 
   getCount() {     
@@ -43,9 +47,9 @@ export class DataService implements OnInit {
     return this.DB.getAllTitle();
   }
 
-  show(item){
-    console.log(item);
-  }
+  // show(item){
+  //   console.log(item);
+  // }
 
   basicStages():string[]{   
     return new Array(
@@ -59,7 +63,13 @@ export class DataService implements OnInit {
     newProject.newStage = stages.map(i => i.trim())
     newProject.projectTitle = newProject.projectTitle.trim();    
     this.DB.set(this.name + newProject.projectTitle, newProject)
-    this.projectsObject.next(this.getCount()); 
+    this.projectsCountObject.next(this.getCount()); 
+  }
+
+  deleteProject(projectTitle: string){
+    this.DB.deleteProject(this.name+projectTitle);
+    this.projectTitlesObject.next(this.getAllTitles()); 
+    this.projectsCountObject.next(this.getCount()); 
   }
 
 

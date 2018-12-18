@@ -14,7 +14,7 @@ const routes: Routes = [
     component: AddFormComponent
   },
   {
-    path : ':project-title',
+    path : 'projects/:project-title',
     component: ProjectComponent
   }  
 ];
