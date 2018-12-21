@@ -10,20 +10,24 @@ import { DataService} from '../data.service';
 })
 export class ProjectListComponent implements OnInit { 
 
-  private projects;
+  private projects; 
 
   constructor(private data: DataService ) { }
 
   ngOnInit() {
-    this.data.projectTitles.subscribe(data => {
-      this.projects = data;
+    this.data.projectTitles.subscribe(data => {        
+      this.projects = data
     })
-    this.projects = this.data.getAllTitles();
-    // console.log(this.projects);
+    this.projects = this.data.getAllProjects()
   }  
-  
-  deleleProject(projectTitle: string){
-    this.data.deleteProject(projectTitle);   
+
+  // deleleProject(projectTitle: string){
+  //   this.data.deleteProject(projectTitle);   
+  // }
+
+  sortProjects(a, b){
+    if(a.projectPriority>b.projectPriority){return 1};
+    if(a.projectPriority<b.projectPriority){return -1};
   }
 
-}
+ }

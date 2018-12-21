@@ -13,6 +13,7 @@ import { DataService} from './data.service';
 import { LocalStorageService } from './local-storage.service';
 import { AddFormComponent } from './add-form/add-form.component';
 import { StagesComponent } from './stages/stages.component';
+import { ProjectCardComponent } from './project-card/project-card.component';
 
 
 
@@ -28,7 +29,8 @@ import { StagesComponent } from './stages/stages.component';
     ProjectComponent,
     TodoItemComponent,
     AddFormComponent,
-    StagesComponent    
+    StagesComponent,
+    ProjectCardComponent    
   ],
   imports: [
     BrowserModule,

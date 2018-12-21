@@ -28,7 +28,7 @@ export class DataService implements OnInit {
 
   getCount() {     
     // console.log(this.DB.lenght());
-     return this.DB.lenght();    //jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+     return this.DB.lenght(this.name);    
   }
 
   // onChange (callback) {
@@ -43,8 +43,8 @@ export class DataService implements OnInit {
     return this.DB.get(this.name + title);
   }
 
-  getAllTitles(){
-    return this.DB.getAllTitle();
+  getAllProjects(){  
+    return this.DB.getAllProjects(this.name);    
   }
 
   // show(item){
@@ -61,14 +61,16 @@ export class DataService implements OnInit {
   
   createProject(newProject, stages){    
     newProject.newStage = stages.map(i => i.trim())
-    newProject.projectTitle = newProject.projectTitle.trim();    
+    newProject.projectTitle = newProject.projectTitle.trim();  
+    newProject.date = new Date().getTime();  
+    newProject.timer = null;
     this.DB.set(this.name + newProject.projectTitle, newProject)
     this.projectsCountObject.next(this.getCount()); 
   }
 
   deleteProject(projectTitle: string){
     this.DB.deleteProject(this.name+projectTitle);
-    this.projectTitlesObject.next(this.getAllTitles()); 
+    this.projectTitlesObject.next(this.getAllProjects()); 
     this.projectsCountObject.next(this.getCount()); 
   }
 

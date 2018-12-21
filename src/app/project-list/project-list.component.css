@@ -22,3 +22,23 @@
     width: 200px; 
     height: 200px; 
 }
+
+.prioritet1{
+    background-color: red;
+}
+
+.prioritet2{
+    background-color:darkorange;
+}
+
+.prioritet3{
+    background-color:gold;
+}
+
+.prioritet4{
+    background-color:chartreuse;
+}
+
+.prioritet5{
+    background-color:seagreen;
+}
