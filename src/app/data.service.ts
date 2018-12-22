@@ -9,26 +9,26 @@ import { distinctUntilChanged, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DataService implements OnInit {
-  private name: string = 'My_';
-  
+  private name: String = 'My_';
+
   private projectsCountObject = new BehaviorSubject<any>({} as any); // count in Header
   public projectsCount = this.projectsCountObject.asObservable();
 
-  private projectTitlesObject = new BehaviorSubject<any>({} as any); //Titlea array in project-list
+  private projectTitlesObject = new BehaviorSubject<any>({} as any); // Titlea array in project-list
   public projectTitles = this.projectTitlesObject.asObservable();
- 
-  
-  
+
+
+
 
   constructor(private DB: LocalStorageService) { }
 
   ngOnInit() {
-   
-  }    
 
-  getCount() {     
+  }
+
+  getCount() {
     // console.log(this.DB.lenght());
-     return this.DB.lenght(this.name);    
+     return this.DB.lenght(this.name);
   }
 
   // onChange (callback) {
@@ -43,45 +43,45 @@ export class DataService implements OnInit {
     return this.DB.get(this.name + title);
   }
 
-  getAllProjects(){  
-    return this.DB.getAllProjects(this.name);    
+  getAllProjects() {
+    return this.DB.getAllProjects(this.name);
   }
 
   // show(item){
   //   console.log(item);
   // }
 
-  basicStages():string[]{   
+  basicStages(): string[] {
     return new Array(
-      "start of the project",
-      "work on the project",
-      "end of the project"
-    )    
+      'start of the project',
+      'work on the project',
+      'end of the project'
+    );
   }
-  
-  createProject(newProject, stages){    
-    newProject.newStage = stages.map(i => i.trim())
-    newProject.projectTitle = newProject.projectTitle.trim();  
-    newProject.date = new Date().getTime();  
+
+  createProject(newProject, stages) {
+    newProject.newStage = stages.map(i => i.trim());
+    newProject.projectTitle = newProject.projectTitle.trim();
+    newProject.date = new Date().getTime();
     newProject.timer = null;
-    this.DB.set(this.name + newProject.projectTitle, newProject)
-    this.projectsCountObject.next(this.getCount()); 
+    this.DB.set(this.name + newProject.projectTitle, newProject);
+    this.projectsCountObject.next(this.getCount());
   }
 
-  deleteProject(projectTitle: string){
-    this.DB.deleteProject(this.name+projectTitle);
-    this.projectTitlesObject.next(this.getAllProjects()); 
-    this.projectsCountObject.next(this.getCount()); 
+  deleteProject(projectTitle: string) {
+    this.DB.deleteProject(this.name + projectTitle);
+    this.projectTitlesObject.next(this.getAllProjects());
+    this.projectsCountObject.next(this.getCount());
   }
 
 
 
 
 
-  add(){}//
-  delete(){}//
-  get(){}//
-  edit(){}//
+  add() {}//
+  delete() {}//
+  get() {}//
+  edit() {}//
 
   // private data = [
   //   { name: 'Apple iPhone 7', price: 56000},

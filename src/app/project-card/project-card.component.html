@@ -1,3 +1,6 @@
-<p>
-  project-card works!
-</p>
+<div class="card prioritet{{project.projectPriority}}"> 
+   <p>{{project.projectTitle}}</p> 
+   <button routerLink="projects/{{project.projectTitle}}">=></button>
+   <button (click) = "delete(project.projectTitle)">Delete</button>
+</div>
+

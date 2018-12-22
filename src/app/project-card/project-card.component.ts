@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-project-card',
@@ -8,6 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class ProjectCardComponent implements OnInit {
 
   constructor() { }
+
+  @Input() project;
+
+  @Output() deleteProject = new EventEmitter();
+
+  delete(title) {
+    this.deleteProject.emit(title);
+  }
 
   ngOnInit() {
   }

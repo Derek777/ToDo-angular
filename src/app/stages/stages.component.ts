@@ -11,17 +11,18 @@ export class StagesComponent  {
 
   constructor(private data: DataService) { }
 
-  @Input() stage: string
+  @Input() stage: string;
 
   // @Output() del = new EventEmitter();
   //   delStage(title) {
   //       this.del.emit(title);
   //   }
 
-  @Output() onChanged =new EventEmitter()
+  @Output() onChanged = new EventEmitter();
+
     change(title) {
       this.onChanged.emit(title);
     }
-  
+
 
 }

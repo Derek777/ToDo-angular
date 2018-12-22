@@ -1,0 +1,26 @@
+.card {    
+    width: 250px;
+    height: 250px;
+    margin: 15px;
+    background-color: aqua;   
+}
+
+.prioritet1{
+    background-color: red;
+}
+
+.prioritet2{
+    background-color:darkorange;
+}
+
+.prioritet3{
+    background-color:gold;
+}
+
+.prioritet4{
+    background-color:chartreuse;
+}
+
+.prioritet5{
+    background-color:seagreen;
+}
