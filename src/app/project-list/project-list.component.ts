@@ -28,7 +28,7 @@ export class ProjectListComponent implements OnInit {
     this.projects.forEach((element, index, arr) =>  {
       if (element.projectTitle === title) {
         arr.splice(index, 1);
-        console.log(this);
+        // console.log(this);
         this.data.deleteProject(title);
       }
     });

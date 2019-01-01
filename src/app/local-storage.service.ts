@@ -7,7 +7,7 @@ export class LocalStorageService {
 
   constructor() { }
 
-  lenght(name):Number {
+  lenght(name): Number {
     const arr = [];
     for (let i = 0, len = localStorage.length; i < len; ++i) {
       if (localStorage.key( i ).substr(0, 3) === name) {
@@ -17,7 +17,7 @@ export class LocalStorageService {
     return arr.length;
   }
 
-  getAllProjects(name){
+  getAllProjects(name) {
     const arr = [];
     for ( let i = 0, len = localStorage.length; i < len; ++i ) {
       if (localStorage.key( i ).substr(0, 3) === name) {

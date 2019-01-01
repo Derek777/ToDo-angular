@@ -14,6 +14,8 @@ import { LocalStorageService } from './local-storage.service';
 import { AddFormComponent } from './add-form/add-form.component';
 import { StagesComponent } from './stages/stages.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
+import { TimePipe } from './time.pipe';
+import { LongTimePipe } from './long-time.pipe';
 
 
 
@@ -30,17 +32,18 @@ import { ProjectCardComponent } from './project-card/project-card.component';
     TodoItemComponent,
     AddFormComponent,
     StagesComponent,
-    ProjectCardComponent    
+    ProjectCardComponent,
+    TimePipe,
+    LongTimePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule
   ],
   providers: [
     DataService,
     LocalStorageService,
-    
   ],
   bootstrap: [AppComponent]
 })

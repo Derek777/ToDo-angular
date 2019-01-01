@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ProjectListComponent} from './project-list/project-list.component';
-import {ProjectComponent} from "./project/project.component";
+import {ProjectComponent} from './project/project.component';
 import { AddFormComponent } from './add-form/add-form.component';
 
 const routes: Routes = [
@@ -14,9 +14,9 @@ const routes: Routes = [
     component: AddFormComponent
   },
   {
-    path : 'projects/:project-title',
+    path : 'projects/:project',
     component: ProjectComponent
-  }  
+  }
 ];
 
 @NgModule({

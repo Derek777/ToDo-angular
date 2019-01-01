@@ -1,6 +1,10 @@
 <div class="card prioritet{{project.projectPriority}}"> 
-   <p>{{project.projectTitle}}</p> 
+   <h1>{{project.projectTitle}}</h1> 
+   <!-- <p>{{project | json}}</p> -->
+
+   <p *ngIf = "this.timer < 600">{{this.timer | time}}</p>
    <button routerLink="projects/{{project.projectTitle}}">=></button>
+   <!-- <a [routerLink]="['/projects', project.projectTitle]"> Profile</a> -->
    <button (click) = "delete(project.projectTitle)">Delete</button>
 </div>
 

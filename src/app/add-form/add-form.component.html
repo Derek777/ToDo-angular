@@ -36,7 +36,7 @@
   <div *ngFor="let stage of stages">
     <app-stages *ngIf="stage"
     [stage] = "stage"
-    (onChanged)="onChanged($event)"
+    (deleteStage)="deleteStage($event)"
     ></app-stages> 
   </div>      
   <br/>

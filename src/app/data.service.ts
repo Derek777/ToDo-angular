@@ -92,7 +92,7 @@ export class DataService implements OnInit {
   //   return this.data;
   // }
 
-  
+
 
   // someMethod() {
   //   const myData = {foo: 'bar'};

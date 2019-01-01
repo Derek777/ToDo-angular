@@ -13,30 +13,30 @@ export class MyValidators {
         private data: DataService ,
     ) {}
 
-    emptyValidator(control: FormControl){       
+    emptyValidator(control: FormControl) {
         const pattern = /^\s*$/;
-        if(pattern.test(control.value)){                
-            return {empty: true}
+        if(pattern.test(control.value)) {
+            return {empty: true};
         }
-        return null;    
+        return null;
     }
 
-    availableCharacters(control: FormControl){
+    availableCharacters(control: FormControl) {
         const pattern = /[,!\@#$%^\&*()=+|\\/\\\\]/;
-        if(pattern.test(control.value)){                
-            return {character: true}
+        if (pattern.test(control.value)) {
+            return {character: true};
         }
-        return null;  
+        return null;
     }
 
-    checkTitle(control: FormControl): Promise<any> {       
+    checkTitle(control: FormControl): Promise<any> {
         return new Promise((resolve, reject) => {
-            if(this.data.getTitle(control.value.trim())){
+            if (this.data.getTitle(control.value.trim())) {
                 resolve({checkTitle: true});
             } else {
                 resolve(null);
             }
-        })
+        });
     }
 }
 

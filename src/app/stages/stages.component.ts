@@ -18,10 +18,10 @@ export class StagesComponent  {
   //       this.del.emit(title);
   //   }
 
-  @Output() onChanged = new EventEmitter();
+  @Output() deleteStage = new EventEmitter();
 
-    change(title) {
-      this.onChanged.emit(title);
+    delete(title) {
+      this.deleteStage.emit(title);
     }
 
 
