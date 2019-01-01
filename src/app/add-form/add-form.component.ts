@@ -13,7 +13,6 @@ import { MyValidators } from '../validators';
 export class AddFormComponent implements OnInit {
 
   private newProjectForm: FormGroup;
-  // private submitted = false;      //??????
   private show = false;
   private stages: Array<string>;
 
@@ -53,7 +52,6 @@ export class AddFormComponent implements OnInit {
   }
 
   get f() {
-    // console.log(this.newProjectForm.controls );
     return this.newProjectForm.controls;
   }
 
@@ -74,17 +72,11 @@ export class AddFormComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.submitted = true;  //????
     if (this.newProjectForm.invalid) {
       return;
     }
-    // let stages = this.stages.map(i =>{
-    //   return i.trim();
-    // })
     this.data.createProject(this.newProjectForm.value, this.stages);
-    // alert("ss");
     this.router.navigate(['/']);
-    // this.cd.detectChanges();
   }
 
 }

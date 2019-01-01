@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { DataService} from 'src/app/data.service';
-// import { resolve } from 'path';
 
 @Injectable({
     providedIn: 'root'
@@ -15,7 +14,7 @@ export class MyValidators {
 
     emptyValidator(control: FormControl) {
         const pattern = /^\s*$/;
-        if(pattern.test(control.value)) {
+        if (pattern.test(control.value)) {
             return {empty: true};
         }
         return null;

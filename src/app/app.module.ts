@@ -18,10 +18,6 @@ import { TimePipe } from './time.pipe';
 import { LongTimePipe } from './long-time.pipe';
 
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -13,7 +13,6 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
 
   private timer;
   private tiktak;
-  // private currentDate;
   private deadline;
 
   @Input() project;
@@ -21,23 +20,16 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
   @Output() deleteProject = new EventEmitter();
 
   delete(title) {
-    // clearInterval(this.startTimer);
     this.deleteProject.emit(title);
   }
 
   ngOnInit() {
-    // this.currentDate = new Date().getTime();
     this.deadline = this.project.projectTime * 60 * 60 * 1000;
-    // this.timer = this.project.date + this.deadline - new Date().getTime();
     this.countOfTimer();
 
-    // this.startTimer();
     this.tiktak = setInterval(() => {
-      // console.log(this.timer);
       if (this.timer > 0) {
         this.countOfTimer();
-        // console.log(this.timer);
-        // this.timer = (this.project.date + this.deadline - new Date().getTime()) / 1000;
       } else {
         this.timer = 0;
       }
@@ -45,7 +37,6 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // alert('kill');
     clearInterval(this.tiktak);
   }
 

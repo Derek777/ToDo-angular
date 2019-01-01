@@ -21,14 +21,10 @@ export class ProjectListComponent implements OnInit {
     this.projects = this.data.getAllProjects();
   }
 
-  // deleleProject(projectTitle: string){
-  //   this.data.deleteProject(projectTitle);
-  // }
   deleteProject(title) {
     this.projects.forEach((element, index, arr) =>  {
       if (element.projectTitle === title) {
         arr.splice(index, 1);
-        // console.log(this);
         this.data.deleteProject(title);
       }
     });

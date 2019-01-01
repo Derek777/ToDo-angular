@@ -13,16 +13,10 @@ export class StagesComponent  {
 
   @Input() stage: string;
 
-  // @Output() del = new EventEmitter();
-  //   delStage(title) {
-  //       this.del.emit(title);
-  //   }
-
   @Output() deleteStage = new EventEmitter();
 
     delete(title) {
       this.deleteStage.emit(title);
     }
-
 
 }

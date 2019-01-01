@@ -3,20 +3,9 @@
   <div class="card add">
       <button class=add-btn routerLink="/add">+</button>
   </div >   
-  <!-- <div *ngFor="let project of projects.sort(this.sortProjects)">     -->
-    <!-- <div class="card prioritet{{project.projectPriority}}"> -->
   <app-project-card *ngFor="let project of projects.sort(this.sortProjects)" 
     [project] = "project"
     (deleteProject) = "deleteProject($event)">       
   </app-project-card>
-        <!-- {{project.projectTitle}} -->
-        <!-- <p>{{project.projectPriority}}</p> -->
-        <!-- <h2>{{project.projectTime}}</h2> -->
-        <!-- <p>{{ project.date }}</p> -->
-        <!-- <p>{{ project.timer }}</p> -->
-        <!-- <button routerLink="projects/{{project.projectTitle}}">=></button>
-        <button (click) = deleleProject(project.projectTitle)>Delete</button> -->
-    
-  <!-- </div>  -->
 </div>
 
