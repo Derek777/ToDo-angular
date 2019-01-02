@@ -39,7 +39,7 @@ export class AddFormComponent implements OnInit {
       projectTime: ['24', [
         Validators.required,
         Validators.maxLength(3),
-        Validators.pattern('^[0-9]+$')]
+        Validators.pattern('^[1-9][0-9]*')]
       ],
       projectPriority: ['1', Validators.required],
       newStage: ['new stage', [

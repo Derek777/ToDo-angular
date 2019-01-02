@@ -3,7 +3,6 @@ import {LocalStorageService} from './local-storage.service';
 import { BehaviorSubject } from 'rxjs';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -47,6 +46,13 @@ export class DataService implements OnInit {
     newProject.timer = null;
     this.DB.set(this.name + newProject.projectTitle, newProject);
     this.projectsCountObject.next(this.getCount());
+  }
+
+  updateProjectStages(title, stages) {
+    const updateProject = this.getTitle(title);
+    updateProject.newStage = stages;
+    this.deleteProject(title);
+    this.DB.set( this.name + title, updateProject);
   }
 
   deleteProject(projectTitle: string) {

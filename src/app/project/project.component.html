@@ -1,4 +1,7 @@
-<p>
-  project works!
-</p>
+<ul appSortableList (sort)="sort($event)">
+  <li *ngFor="let stage of stages" class="box" appSortable>
+    {{ stage }}
+    <div class="box" *appDraggableHelper>{{ box }}</div>
+  </li>
+</ul>
 <button class=add-btn routerLink="/"><=</button>

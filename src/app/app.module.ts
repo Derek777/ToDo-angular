@@ -16,6 +16,9 @@ import { StagesComponent } from './stages/stages.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { TimePipe } from './time.pipe';
 import { LongTimePipe } from './long-time.pipe';
+import { SortableListDirective } from './sortable-list.directive';
+import { SortableDirective } from './sortable.directive';
+import { DraggableDirective } from './draggable.directive';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { LongTimePipe } from './long-time.pipe';
     StagesComponent,
     ProjectCardComponent,
     TimePipe,
-    LongTimePipe
+    LongTimePipe,
+    SortableListDirective,
+    SortableDirective,
+    DraggableDirective
   ],
   imports: [
     BrowserModule,
