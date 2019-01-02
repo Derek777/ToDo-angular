@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService} from '../data.service';
 import { TimerService } from '../timer.service';
 import { ActivatedRoute } from '@angular/router';
-import { SortEvent } from '../sortable-list.directive';
+import { SortEvent } from '../draggable/sortable-list.directive';
 
 @Component({
   selector: 'app-project',
@@ -34,6 +34,10 @@ export class ProjectComponent implements OnInit, OnDestroy {
     this.timerService.setTimer(this.deadline);
     this.timerService.setDate(this.date);
   }
+
+  trackByFn(index, item) {
+    return item.id;
+ }
 
   ngOnDestroy() {
     this.timerService.setTitle(null);

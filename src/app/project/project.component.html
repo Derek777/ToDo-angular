@@ -1,5 +1,5 @@
 <ul appSortableList (sort)="sort($event)">
-  <li *ngFor="let stage of stages" class="box" appSortable>
+  <li *ngFor="let stage of stages; trackBy: trackByFn" class="box" appSortable>
     {{ stage }}
     <div class="box" *appDraggableHelper>{{ box }}</div>
   </li>
