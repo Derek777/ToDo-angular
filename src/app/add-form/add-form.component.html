@@ -23,21 +23,21 @@
   </label> 
   <br/> 
   <label>
-      Priority of the project:
-      <select formControlName="projectPriority">
-        <option value="1">1</option>  
-        <option value="2">2</option> 
-        <option value="3">3</option>  
-        <option value="4">4</option> 
-        <option value="5">5</option> 
-      </select>
+      Проекти за пріоритетом:
+      <select formControlName="projectPriority" #select [ngClass]="'prioritet' + select.value" >
+        <option class="prioritet5" value="5">не важливий</option> 
+        <option class="prioritet4" value="4">звичайний</option> 
+        <option class="prioritet3" value="3">важливий</option>
+        <option class="prioritet2" value="2">дуже важливий</option> 
+        <option class="prioritet1" value="1">першочерговий</option>                           
+      </select>       
   </label>
   <p>Етапи проекту:</p>
   <div *ngFor="let stage of stages">
     <app-stages *ngIf="stage"
     [stage] = "stage"
     (deleteStage)="deleteStage($event)"
-    ></app-stages> 
+    ></app-stages>  
   </div>      
   <br/>
   <input formControlName="newStage" type="text" *ngIf="show" id="ttt">
