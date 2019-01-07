@@ -4,4 +4,5 @@
     <div class="box" *appDraggableHelper>{{ box }}</div>
   </li>
 </ul>
+<h3 *ngIf = "!stages">Такого проекта не існує, або був видалений з Local Storage</h3>
 <button class=add-btn routerLink="/"><=</button>

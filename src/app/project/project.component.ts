@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DataService} from '../data.service';
-import { TimerService } from '../timer.service';
+import { DataService} from '../_services/data.service';
+import { TimerService } from '../_services/timer.service';
 import { ActivatedRoute } from '@angular/router';
 import { SortEvent } from '../draggable/sortable-list.directive';
 
@@ -28,15 +28,16 @@ export class ProjectComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.title = this.route.snapshot.params['project'];
     this.project = this.data.getTitle(this.title);
-    this.deadline = this.project.projectTime;
-    this.date = this.project.date;
-    this.stages = this.project.newStage;
-    this.deadline = this.project.projectTime * 60 * 60 * 1000;
+    if (this.project) {
+      this.date = this.project.date;
+      this.stages = this.project.newStage;
+      this.deadline = this.project.projectTime * 60 * 60 * 1000;
 
+      this.timerService.setTitle(this.title);
+      this.timerService.setTimer(this.deadline);
+      this.timerService.setDate(this.date);
+    }
 
-    this.timerService.setTitle(this.title);
-    this.timerService.setTimer(this.deadline);
-    this.timerService.setDate(this.date);
   }
 
   ngOnDestroy() {

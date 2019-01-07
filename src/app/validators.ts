@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { DataService} from 'src/app/data.service';
+import { DataService} from 'src/app/_services/data.service';
 
 @Injectable({
     providedIn: 'root'
@@ -36,6 +36,14 @@ export class MyValidators {
                 resolve(null);
             }
         });
+    }
+
+    longWords(control: FormControl) {
+        const pattern = /[^\s]{12,}/;
+        if (pattern.test(control.value)) {
+            return {word: true};
+        }
+        return null;
     }
 }
 

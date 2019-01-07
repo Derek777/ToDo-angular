@@ -9,6 +9,7 @@
         <p *ngIf="f.projectTitle.errors.maxlength">Надто довга назва</p>   
         <p *ngIf="f.projectTitle.errors.checkTitle">Проект з такою назвою вже існує</p>  
         <p *ngIf="f.projectTitle.errors.character">Ви використали некоректний символ</p>       
+        <p *ngIf="f.projectTitle.errors.word">Надто довге слово</p>   
       </div>      
   </label>
   <br/>

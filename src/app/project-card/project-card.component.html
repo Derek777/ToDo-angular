@@ -1,7 +1,8 @@
 <div class="card prioritet{{project.projectPriority}}"> 
-   <h1>{{project.projectTitle}}</h1>   
+   <h4 class="title">{{project.projectTitle}}</h4>   
    <p *ngIf = "this.timer < 600">{{this.timer | time}}</p>
    <button routerLink="projects/{{project.projectTitle}}">=></button>
-   <button (click) = "delete(project.projectTitle)">Delete</button>
+   <button appModal (click) = "delete(project.projectTitle)">Delete</button>
 </div>
+
 

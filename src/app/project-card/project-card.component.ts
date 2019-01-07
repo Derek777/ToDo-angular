@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, OnDestroy } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { ModalService } from '../_services/modal.service';
+
 
 
 @Component({
@@ -9,17 +11,19 @@ import { EventEmitter } from '@angular/core';
 })
 export class ProjectCardComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  constructor(private modalService: ModalService) { }
 
   private timer;
   private tiktak;
   private deadline;
+  private modal = false;
 
   @Input() project;
 
   @Output() deleteProject = new EventEmitter();
 
   delete(title) {
+    this.modalService.open('custom-modal-1');
     this.deleteProject.emit(title);
   }
 

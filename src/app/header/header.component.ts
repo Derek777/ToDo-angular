@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
-import { DataService} from '../data.service';
-import { TimerService } from '../timer.service';
+import { DataService} from '../_services/data.service';
+import { TimerService } from '../_services/timer.service';
 
 
 @Component({

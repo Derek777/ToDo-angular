@@ -8,4 +8,10 @@
     (deleteProject) = "deleteProject($event)">       
   </app-project-card>
 </div>
+<app-modal id="custom-modal-1">
+  <p>Ви дійсно бажаєте видалити проект :</p>
+  <h3>{{this.projectTitle}}</h3>
+  <button (click)="cancel('custom-modal-1');">НІ я передумав</button>
+  <button (click)="closeModal('custom-modal-1');">ТАК видалити</button>
+</app-modal>
 

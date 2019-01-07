@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService} from '../data.service';
-
+import { DataService} from '../_services/data.service';
+import { ModalService } from '../_services/modal.service';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -11,8 +12,15 @@ import { DataService} from '../data.service';
 export class ProjectListComponent implements OnInit {
 
   private projects;
+  private projectTitle;
 
-  constructor(private data: DataService ) { }
+  private modalWindow = new BehaviorSubject<any>({} as any); // count in Header
+  public modal = this.modalWindow.asObservable();
+
+  constructor(
+    private data: DataService,
+    private modalService: ModalService
+  ) { }
 
   ngOnInit() {
     this.data.projectTitles.subscribe(data => {
@@ -22,12 +30,7 @@ export class ProjectListComponent implements OnInit {
   }
 
   deleteProject(title) {
-    this.projects.forEach((element, index, arr) =>  {
-      if (element.projectTitle === title) {
-        arr.splice(index, 1);
-        this.data.deleteProject(title);
-      }
-    });
+    this.projectTitle = title;
   }
 
   sortProjects(a, b) {
@@ -37,6 +40,20 @@ export class ProjectListComponent implements OnInit {
     if ( a.projectPriority < b.projectPriority) {
       return -1;
      }
+  }
+
+  closeModal(id: string) {
+    this.projects.forEach((element, index, arr) =>  {
+      if (element.projectTitle === this.projectTitle) {
+        arr.splice(index, 1);
+        this.data.deleteProject(this.projectTitle);
+      }
+    });
+    this.modalService.close(id);
+  }
+
+  cancel(id: string) {
+    this.modalService.close(id);
   }
 
  }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DataService} from '../data.service';
+import { DataService} from '../_services/data.service';
 import { MyValidators } from '../validators';
 
 @Component({
@@ -32,7 +32,8 @@ export class AddFormComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(30),
         this.myValidator.emptyValidator,
-        this.myValidator.availableCharacters
+        this.myValidator.availableCharacters,
+        this.myValidator.longWords
       ],
       [this.myValidator.checkTitle.bind(this)]
       ],

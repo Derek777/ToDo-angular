@@ -9,16 +9,19 @@ import { FooterComponent } from './footer/footer.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectComponent } from './project/project.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
-import { DataService} from './data.service';
-import { LocalStorageService } from './local-storage.service';
+import { DataService} from './_services/data.service';
+import { LocalStorageService } from './_services/local-storage.service';
 import { AddFormComponent } from './add-form/add-form.component';
 import { StagesComponent } from './stages/stages.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
-import { TimePipe } from './time.pipe';
-import { LongTimePipe } from './long-time.pipe';
+import { TimePipe } from './_pipes/time.pipe';
+import { LongTimePipe } from './_pipes/long-time.pipe';
 import { SortableListDirective } from './draggable/sortable-list.directive';
 import { SortableDirective } from './draggable/sortable.directive';
 import { DraggableDirective } from './draggable/draggable.directive';
+import { ModalComponent } from './modal/modal.component';
+
+
 
 
 @NgModule({
@@ -36,7 +39,8 @@ import { DraggableDirective } from './draggable/draggable.directive';
     LongTimePipe,
     SortableListDirective,
     SortableDirective,
-    DraggableDirective
+    DraggableDirective,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
