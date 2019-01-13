@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { DataService} from '../_services/data.service';
+import { FormControl, Validators } from '@angular/forms';
+import { MyValidators } from '../validators';
 
 
 @Component({
@@ -7,16 +9,44 @@ import { DataService} from '../_services/data.service';
   templateUrl: './stages.component.html',
   styleUrls: ['./stages.component.css']
 })
-export class StagesComponent  {
+export class StagesComponent implements OnInit {
 
-  constructor(private data: DataService) { }
+  private remixer: Boolean = false;
+  private input;
+
+  constructor(
+    private data: DataService,
+    private myValidator: MyValidators
+  ) {}
 
   @Input() stage: string;
 
   @Output() deleteStage = new EventEmitter();
 
-    delete(title) {
-      this.deleteStage.emit(title);
+  ngOnInit() {
+     this.input = new FormControl(
+          this.stage, [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(300),
+          this.myValidator.emptyValidator,
+          this.myValidator.longWords]
+       );
+  }
+
+  get f() {
+    return this.input;
+  }
+
+  delete(stage) {
+    this.deleteStage.emit(stage);
+  }
+
+  edit(stage) {
+    if (this.remixer) {
+      this.stage = this.input.value;
     }
+    this.remixer = !this.remixer;
+  }
 
 }

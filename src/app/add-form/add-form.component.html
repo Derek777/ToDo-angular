@@ -41,14 +41,9 @@
     ></app-stages>  
   </div>      
   <br/>
-  <input formControlName="newStage" type="text" *ngIf="show" id="ttt">
-  <div *ngIf="f.newStage.errors" class="alert">
-      <p *ngIf="!f.newStage.errors.empty && f.newStage.errors.minlength">Мало символів</p>
-      <p *ngIf="f.newStage.errors.empty">Назвіть свій етап проекту</p>   
-      <p *ngIf="f.newStage.errors.maxlength">Надто довга назва</p>   
-  </div> 
-  <br/>        
-  <button type="button" [disabled]=f.newStage.errors (click)="toglle()">{{show ? 'Створити новий етап проекту' : 'Додати новий етап проекту'}}</button>    
+  <app-add-stage
+    (addStage) = "addStage($event)">   
+  </app-add-stage>    
   <br/>
   <button type="submit" [disabled]=!newProjectForm.valid>Create project</button>
   <br/> 

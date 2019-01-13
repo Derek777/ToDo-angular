@@ -20,6 +20,8 @@ import { SortableListDirective } from './draggable/sortable-list.directive';
 import { SortableDirective } from './draggable/sortable.directive';
 import { DraggableDirective } from './draggable/draggable.directive';
 import { ModalComponent } from './modal/modal.component';
+import { AddStageComponent } from './add-stage/add-stage.component';
+
 
 
 
@@ -41,6 +43,7 @@ import { ModalComponent } from './modal/modal.component';
     SortableDirective,
     DraggableDirective,
     ModalComponent,
+    AddStageComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,10 +8,21 @@
     (deleteProject) = "deleteProject($event)">       
   </app-project-card>
 </div>
+
 <app-modal id="custom-modal-1">
   <p>Ви дійсно бажаєте видалити проект :</p>
   <h3>{{this.projectTitle}}</h3>
   <button (click)="cancel('custom-modal-1');">НІ я передумав</button>
   <button (click)="closeModal('custom-modal-1');">ТАК видалити</button>
+</app-modal>
+
+<app-modal id="custom-modal-2">
+  <p>У вас не має жодних проектів.</p>
+  <p>
+    Аплікація використовує Local Storage,
+    тому можуть не відображатися проекти 
+    створенні в інших браузерах.
+  </p>
+  <button (click)="cancel('custom-modal-2');">Зрозумів</button> 
 </app-modal>
 

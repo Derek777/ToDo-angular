@@ -1,0 +1,12 @@
+.stage-text {
+    display: inline;
+}
+
+.stages-active {
+    width: 100%;
+}
+
+.stage-header {
+    display: block;
+    text-align: center;
+}

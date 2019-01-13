@@ -39,6 +39,10 @@ export class DataService implements OnInit {
     );
   }
 
+  getStages(title) {
+    return this.getTitle(title).newStage;
+  }
+
   createProject(newProject, stages) {
     newProject.newStage = stages.map(i => i.trim());
     newProject.projectTitle = newProject.projectTitle.trim();

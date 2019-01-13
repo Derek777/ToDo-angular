@@ -35,6 +35,9 @@ export class LocalStorageService {
       try {
         localStorage.setItem(key, JSON.stringify(data));
       } catch (e) {
+        if (e.number === 22) {
+          alert('Локальное хранилище переполнено');
+        }
         console.error('Error saving to localStorage', e);
       }
   }

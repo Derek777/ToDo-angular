@@ -16,7 +16,6 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
   private timer;
   private tiktak;
   private deadline;
-  private modal = false;
 
   @Input() project;
 

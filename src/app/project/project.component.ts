@@ -17,8 +17,6 @@ export class ProjectComponent implements OnInit, OnDestroy {
   private deadline;
   private stages;
 
-  // trappedBoxes = ['Trapped 1', 'Trapped 2'];
-
   constructor(
     private data: DataService,
     private route: ActivatedRoute,
@@ -37,7 +35,6 @@ export class ProjectComponent implements OnInit, OnDestroy {
       this.timerService.setTimer(this.deadline);
       this.timerService.setDate(this.date);
     }
-
   }
 
   ngOnDestroy() {
@@ -46,18 +43,30 @@ export class ProjectComponent implements OnInit, OnDestroy {
     this.timerService.setDate(null);
   }
 
-  // add(): void {
-  //   this.trappedBoxes.push('New trapped');
-  //   console.log('test');
-  // }
+  addStage(newStage) {
+    this.stages.push(newStage);
+    this.data.updateProjectStages(this.title, this.stages);
+    // window.location.reload();                                           //Костильний костиль!!!!! :(
+  }
 
   sort(event: SortEvent) {
     const current = this.stages[event.currentIndex];
     const swapWith = this.stages[event.newIndex];
-
+    // console.log(event);
     this.stages[event.newIndex] = current;
     this.stages[event.currentIndex] = swapWith;
-    this.data.updateProjectStages(this.title, this.project.newStage);
+    this.data.updateProjectStages(this.title, this.stages);
+  }
+
+
+  deleteStage(stage) {
+    for (let i = 0; i < this.stages.length; i++) {
+      if (stage === this.stages[i]) {
+        this.stages.splice(i, 1);
+        this.data.updateProjectStages(this.title, this.stages);
+        return;
+      }
+    }
   }
 
 }

@@ -1,8 +1,21 @@
-<ul appSortableList (sort)="sort($event)">
-  <li *ngFor="let stage of stages; trackBy: trackByFn" class="box" appSortable>
-    {{ stage }}
-    <div class="box" *appDraggableHelper>{{ box }}</div>
+<h2 class="stage-header">Етапи проекту :</h2>
+<ul appSortableList (sort)="sort($event)" class="stages-active">
+  <li *ngFor="let stage of stages" class="box" appSortable>
+    <!-- <div>
+      <p class= stage-text>{{ stage }}</p>
+      <button>edit</button>
+      <button>delete</button>
+    </div> -->
+    <app-stages *ngIf="stage"
+    [stage] = "stage"
+    (deleteStage)="deleteStage($event)"
+    ></app-stages>  
+    <!-- <div class="box" *appDraggableHelper>{{ box }}</div> -->
   </li>
 </ul>
 <h3 *ngIf = "!stages">Такого проекта не існує, або був видалений з Local Storage</h3>
+<!-- <button>+</button> -->
+<app-add-stage
+  (addStage) = "addStage($event)">   
+</app-add-stage>
 <button class=add-btn routerLink="/"><=</button>

@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { DataService} from '../_services/data.service';
 import { ModalService } from '../_services/modal.service';
-import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -9,13 +8,10 @@ import { BehaviorSubject } from 'rxjs';
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.css']
 })
-export class ProjectListComponent implements OnInit {
+export class ProjectListComponent implements OnInit, AfterViewInit {
 
   private projects;
   private projectTitle;
-
-  private modalWindow = new BehaviorSubject<any>({} as any); // count in Header
-  public modal = this.modalWindow.asObservable();
 
   constructor(
     private data: DataService,
@@ -33,6 +29,12 @@ export class ProjectListComponent implements OnInit {
     this.projectTitle = title;
   }
 
+  ngAfterViewInit() {
+    if (this.projects.length === 0) {
+      this.modalService.open('custom-modal-2');
+    }
+  }
+
   sortProjects(a, b) {
     if ( a.projectPriority > b.projectPriority) {
       return 1;
@@ -41,6 +43,7 @@ export class ProjectListComponent implements OnInit {
       return -1;
      }
   }
+
 
   closeModal(id: string) {
     this.projects.forEach((element, index, arr) =>  {
