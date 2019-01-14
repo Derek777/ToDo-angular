@@ -16,12 +16,11 @@ import { StagesComponent } from './stages/stages.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { TimePipe } from './_pipes/time.pipe';
 import { LongTimePipe } from './_pipes/long-time.pipe';
-import { SortableListDirective } from './draggable/sortable-list.directive';
-import { SortableDirective } from './draggable/sortable.directive';
-import { DraggableDirective } from './draggable/draggable.directive';
 import { ModalComponent } from './modal/modal.component';
 import { AddStageComponent } from './add-stage/add-stage.component';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 
@@ -39,16 +38,17 @@ import { AddStageComponent } from './add-stage/add-stage.component';
     ProjectCardComponent,
     TimePipe,
     LongTimePipe,
-    SortableListDirective,
-    SortableDirective,
-    DraggableDirective,
     ModalComponent,
-    AddStageComponent,
+    AddStageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    DragDropModule
   ],
   providers: [
     DataService,

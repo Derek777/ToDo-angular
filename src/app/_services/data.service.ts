@@ -65,5 +65,11 @@ export class DataService implements OnInit {
     this.projectsCountObject.next(this.getCount());
   }
 
+  editStage(title, index, stage) {
+    const project = this.getTitle(title);
+    project.newStage[index] = stage;
+    this.updateProjectStages(title, project.newStage);
+  }
+
 }
 

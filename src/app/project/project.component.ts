@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService} from '../_services/data.service';
 import { TimerService } from '../_services/timer.service';
 import { ActivatedRoute } from '@angular/router';
-import { SortEvent } from '../draggable/sortable-list.directive';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-project',
@@ -46,27 +46,20 @@ export class ProjectComponent implements OnInit, OnDestroy {
   addStage(newStage) {
     this.stages.push(newStage);
     this.data.updateProjectStages(this.title, this.stages);
-    // window.location.reload();                                           //Костильний костиль!!!!! :(
   }
 
-  sort(event: SortEvent) {
-    const current = this.stages[event.currentIndex];
-    const swapWith = this.stages[event.newIndex];
-    // console.log(event);
-    this.stages[event.newIndex] = current;
-    this.stages[event.currentIndex] = swapWith;
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.stages, event.previousIndex, event.currentIndex);
     this.data.updateProjectStages(this.title, this.stages);
   }
 
-
   deleteStage(stage) {
-    for (let i = 0; i < this.stages.length; i++) {
-      if (stage === this.stages[i]) {
-        this.stages.splice(i, 1);
-        this.data.updateProjectStages(this.title, this.stages);
-        return;
-      }
-    }
+    this.stages.splice(stage, 1);
+    this.data.updateProjectStages(this.title, this.stages);
+  }
+
+  editStage(oldValue, newValue) {
+    console.log(oldValue + '  ' + newValue)
   }
 
 }

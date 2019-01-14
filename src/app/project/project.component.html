@@ -1,21 +1,20 @@
 <h2 class="stage-header">Етапи проекту :</h2>
-<ul appSortableList (sort)="sort($event)" class="stages-active">
-  <li *ngFor="let stage of stages" class="box" appSortable>
-    <!-- <div>
-      <p class= stage-text>{{ stage }}</p>
-      <button>edit</button>
-      <button>delete</button>
-    </div> -->
-    <app-stages *ngIf="stage"
-    [stage] = "stage"
-    (deleteStage)="deleteStage($event)"
+<div *ngIf = "stages">
+<ul cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <li class="example-box" *ngFor="let stage of stages; let i=index" cdkDrag>
+    <app-stages 
+      [stage] = "stage"
+      [titleProject] = "title"
+      [index] = "i"
+      (deleteStage)="deleteStage($event)"      
     ></app-stages>  
-    <!-- <div class="box" *appDraggableHelper>{{ box }}</div> -->
   </li>
 </ul>
-<h3 *ngIf = "!stages">Такого проекта не існує, або був видалений з Local Storage</h3>
-<!-- <button>+</button> -->
+
 <app-add-stage
   (addStage) = "addStage($event)">   
 </app-add-stage>
+</div>
+<h3 *ngIf = "!stages">Такого проекта не існує, або був видалений з Local Storage</h3>
 <button class=add-btn routerLink="/"><=</button>
+

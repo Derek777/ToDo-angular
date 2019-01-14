@@ -20,8 +20,12 @@ export class StagesComponent implements OnInit {
   ) {}
 
   @Input() stage: string;
+  @Input() titleProject: string;
+  @Input() index: number;
+  @Input() showEdit: boolean;
 
   @Output() deleteStage = new EventEmitter();
+  @Output() delStage = new EventEmitter();
 
   ngOnInit() {
      this.input = new FormControl(
@@ -38,13 +42,15 @@ export class StagesComponent implements OnInit {
     return this.input;
   }
 
-  delete(stage) {
-    this.deleteStage.emit(stage);
+  delete() {
+    this.deleteStage.emit(this.index);
+    this.delStage.emit(this.stage);
   }
 
   edit(stage) {
     if (this.remixer) {
-      this.stage = this.input.value;
+      this.stage = stage;
+      this.data.editStage(this.titleProject, this.index, this.stage);
     }
     this.remixer = !this.remixer;
   }

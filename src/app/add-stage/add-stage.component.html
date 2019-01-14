@@ -1,6 +1,7 @@
 <form [formGroup]="addStageForm">
   <label>
-  <input formControlName="stageText" type="text" *ngIf="show">
+  <input formControlName="stageText" type="text" *ngIf="show"
+  [ngClass]="{alert: f.stageText.invalid}">
   <div *ngIf="f.stageText.errors" class="alert">
         <p *ngIf="!f.stageText.errors.empty && f.stageText.errors.minlength">Мало символів</p>
         <p *ngIf="f.stageText.errors.empty">Опишіть етап проекту</p>   
@@ -9,7 +10,7 @@
   </div> 
  </label>
   <br/>        
-  <button type="button" [disabled]="false" (click)="toglle()">
+  <button type="button" [disabled]="!addStageForm.valid" (click)="toglle()">
     {{show ? 'Створити новий етап проекту' : 'Додати новий етап проекту'}}
   </button>  
 </form>

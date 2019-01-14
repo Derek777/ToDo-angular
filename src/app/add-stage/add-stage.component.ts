@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MyValidators } from '../validators';
 
@@ -44,6 +44,5 @@ export class AddStageComponent implements OnInit {
       this.addStage.emit(val);
     }
   }
-
 
 }

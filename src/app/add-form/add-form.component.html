@@ -37,13 +37,14 @@
   <div *ngFor="let stage of stages">
     <app-stages *ngIf="stage"
     [stage] = "stage"
-    (deleteStage)="deleteStage($event)"
+    [showEdit] = false
+    (delStage)="deleteStage($event)"
     ></app-stages>  
   </div>      
   <br/>
   <app-add-stage
-    (addStage) = "addStage($event)">   
-  </app-add-stage>    
+    (addStage) = "addStage($event)"    
+   ></app-add-stage>    
   <br/>
   <button type="submit" [disabled]=!newProjectForm.valid>Create project</button>
   <br/> 

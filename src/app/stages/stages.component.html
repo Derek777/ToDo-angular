@@ -1,7 +1,7 @@
 <p>
   <span *ngIf="!remixer">{{stage}}</span>
-  <input *ngIf="remixer"type="text" value={{stage}}>
-  <button type="button" (click)="edit(stage)" >{{remixer ? 'edit' : 'save'}}</button>
+  <input *ngIf="remixer" type="text"  [formControl]="input" >
+  <button *ngIf="showEdit" type="button" (click)="edit(f.value)" >{{remixer ? 'save' : 'edit'}}</button>
   <button type="button" (click)="delete(stage)" >Delete</button>
 </p>
 

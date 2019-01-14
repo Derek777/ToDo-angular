@@ -68,6 +68,7 @@ export class AddFormComponent implements OnInit {
   }
 
   deleteStage(title) {
+    console.log(title);
     for (let i = 0; i < this.stages.length; i++) {
       if (this.stages[i] === title) {
        this.stages.splice(i, 1);
