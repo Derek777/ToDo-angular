@@ -25,6 +25,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     TimePipe,
     LongTimePipe,
     ModalComponent,
-    AddStageComponent
+    AddStageComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +49,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
-    DragDropModule
+    DragDropModule,
   ],
   providers: [
     DataService,

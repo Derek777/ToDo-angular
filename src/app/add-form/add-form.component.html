@@ -1,52 +1,53 @@
-<form [formGroup]="newProjectForm" (ngSubmit)="onSubmit()">
-  <label>
-      Project Title:
-      <input type="text" formControlName="projectTitle" 
-             [ngClass]="{alert: f.projectTitle.invalid}">
-      <div *ngIf="f.projectTitle.errors" class="alert">
-        <p *ngIf="!f.projectTitle.errors.empty && f.projectTitle.errors.minlength">Мало символів</p>
-        <p *ngIf="f.projectTitle.errors.empty">Назвіть свій проект</p>   
-        <p *ngIf="f.projectTitle.errors.maxlength">Надто довга назва</p>   
-        <p *ngIf="f.projectTitle.errors.checkTitle">Проект з такою назвою вже існує</p>  
-        <p *ngIf="f.projectTitle.errors.character">Ви використали некоректний символ</p>       
-        <p *ngIf="f.projectTitle.errors.word">Надто довге слово</p>   
+<div class="wrapper">
+    <form class="form" [formGroup]="newProjectForm" (ngSubmit)="onSubmit()">
+      <div class="column">
+        <label>
+            <p>Назва проекту:</p>
+            <input type="text" formControlName="projectTitle" 
+                  [ngClass]="{alert: f.projectTitle.invalid}">
+            <div *ngIf="f.projectTitle.errors" class="alert">
+              <p *ngIf="!f.projectTitle.errors.empty && f.projectTitle.errors.minlength">Мало символів</p>
+              <p *ngIf="f.projectTitle.errors.empty">Назвіть свій проект</p>   
+              <p *ngIf="f.projectTitle.errors.maxlength">Надто довга назва</p>   
+              <p *ngIf="f.projectTitle.errors.checkTitle">Проект з такою назвою вже існує</p>  
+              <p *ngIf="f.projectTitle.errors.character">Ви використали некоректний символ</p>       
+              <p *ngIf="f.projectTitle.errors.word">Надто довге слово</p>   
+            </div>      
+        </label>  
+        <label>
+            <p>Кількість годин на реалізацію проекту:</p> 
+            <input type="text" formControlName="projectTime">
+            <div *ngIf="f.projectTime.errors" class="alert">      
+              <p *ngIf="f.projectTime.errors.required">Введіть кількість годин</p>
+              <p *ngIf="f.projectTime.errors.maxlength && !f.projectTime.errors.pattern">Не більше 999 годин</p>
+              <p *ngIf="f.projectTime.errors.pattern">Вводьте тільки цифри</p>
+            </div>  
+        </label>    
+        <label >
+          <p>Проекти за пріоритетом:</p> 
+            <select formControlName="projectPriority" #select [ngClass]="'prioritet' + select.value">
+              <option class="prioritet5" value="5">не важливий</option> 
+              <option class="prioritet4" value="4">звичайний</option> 
+              <option class="prioritet3" value="3">важливий</option>
+              <option class="prioritet2" value="2">дуже важливий</option> 
+              <option class="prioritet1" value="1">першочерговий</option>                           
+            </select>       
+        </label>
+        <button class="create action-button animate green" type="submit" [disabled]=!newProjectForm.valid>Створити проект</button>
+      </div>
+      <div class="column">
+        <p>Етапи проекту:</p>
+          <div *ngFor="let stage of stages">
+              <app-stages *ngIf="stage"
+              [stage] = "stage"
+              [showEdit] = false
+              (delStage)="deleteStage($event)"
+              ></app-stages>  
+          </div>          
+          <app-add-stage
+            (addStage) = "addStage($event)"    
+          ></app-add-stage>                    
       </div>      
-  </label>
-  <br/>
-  <label>
-      Hour for realization of the project:
-      <input type="text" formControlName="projectTime">
-      <div *ngIf="f.projectTime.errors" class="alert">      
-        <p *ngIf="f.projectTime.errors.required">Введіть кількість годин</p>
-        <p *ngIf="f.projectTime.errors.maxlength && !f.projectTime.errors.pattern">Не більше 999 годин</p>
-        <p *ngIf="f.projectTime.errors.pattern">Вводьте тільки цифри</p>
-      </div>  
-  </label> 
-  <br/> 
-  <label>
-      Проекти за пріоритетом:
-      <select formControlName="projectPriority" #select [ngClass]="'prioritet' + select.value" >
-        <option class="prioritet5" value="5">не важливий</option> 
-        <option class="prioritet4" value="4">звичайний</option> 
-        <option class="prioritet3" value="3">важливий</option>
-        <option class="prioritet2" value="2">дуже важливий</option> 
-        <option class="prioritet1" value="1">першочерговий</option>                           
-      </select>       
-  </label>
-  <p>Етапи проекту:</p>
-  <div *ngFor="let stage of stages">
-    <app-stages *ngIf="stage"
-    [stage] = "stage"
-    [showEdit] = false
-    (delStage)="deleteStage($event)"
-    ></app-stages>  
-  </div>      
-  <br/>
-  <app-add-stage
-    (addStage) = "addStage($event)"    
-   ></app-add-stage>    
-  <br/>
-  <button type="submit" [disabled]=!newProjectForm.valid>Create project</button>
-  <br/> 
-</form>
-<button routerLink="/">To Main</button>
+    </form>
+    <button class="action-button animate blue" routerLink="/">До списку проектів</button>
+</div>

@@ -1,7 +1,7 @@
 
 <div class="projects"> 
   <div class="card add">
-      <button class=add-btn routerLink="/add">+</button>
+      <button class="add-btn action-button animate green" routerLink="/add">Додати проект</button>
   </div >   
   <app-project-card *ngFor="let project of projects.sort(this.sortProjects)" 
     [project] = "project"
@@ -12,8 +12,8 @@
 <app-modal id="custom-modal-1">
   <p>Ви дійсно бажаєте видалити проект :</p>
   <h3>{{this.projectTitle}}</h3>
-  <button (click)="cancel('custom-modal-1');">НІ я передумав</button>
-  <button (click)="closeModal('custom-modal-1');">ТАК видалити</button>
+  <button  (click)="cancel('custom-modal-1');">НІ я передумав</button>
+  <button  (click)="closeModal('custom-modal-1');">ТАК видалити</button>
 </app-modal>
 
 <app-modal id="custom-modal-2">

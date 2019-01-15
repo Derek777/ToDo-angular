@@ -1,8 +1,21 @@
 .card {    
     width: 250px;
     height: 250px;
-    margin: 15px;
-    background-color: aqua;   
+    margin: 0 15px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.card .in {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+}
+
+.card .del {
+    position: absolute;
+    bottom: 5px;
+    right: 10px
 }
 
 .prioritet1{
@@ -25,7 +38,9 @@
     background-color:seagreen;
 }
 
-h1 {
-    margin-top: 0px;
+.title {
+    padding-top: 70px;
+    font-size: 16px;
+    text-align: center;
 }
 

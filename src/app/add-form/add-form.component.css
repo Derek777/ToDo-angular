@@ -26,39 +26,45 @@
   background-color:seagreen;
 }
 
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
 
-/* input.ng-pending{
-    border: 1px solid yellow;
-   }
+.example-full-width {
+  width: 100%;
+}
 
-   .box {
-    background: #bada55;
-    border: 1px solid black;
-    padding: 10px 20px;
-    display: inline-block;
-  }
-  .box.dragging {
-    background: coral;
-  }
-  .box.sortable.dragging {
-    background: none;
-    border: 1px dashed black;
-    color: transparent;
-  }
-  .area {
-    background: #c0ffee;
-    padding: 40px;
-  }
-  button {
-    margin-top: 20px;
-  }
-  ul {
-    display: inline-flex;
-    margin: 0;
-    padding: 0;
-    flex-direction: column;
-  }
-  ul.horizontal {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }    */
+.form {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+}
+
+.form .column {
+ width: 50%;
+ padding: 10px;
+ background-color: rgb(221, 219, 219);
+ padding: 25px 25px 25px 75px;
+}
+
+.form div:first-child {
+  margin-right: 20px;
+  position: relative;
+}
+
+.column {
+  min-height: 400px;
+  margin-bottom: 30px;
+}
+
+.create {
+  display: block;
+  position: absolute;
+  bottom: 30px;
+}
+
+
+
+

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService} from '../_services/data.service';
 import { MyValidators } from '../validators';
-import { BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-add-form',
@@ -16,9 +16,6 @@ export class AddFormComponent implements OnInit {
   private newProjectForm: FormGroup;
   private show = false;
   private stages: Array<string>;
-
-  // private projectsStages = new BehaviorSubject<any>({} as any); // count in Header
-  // public stages = this.projectsStages.asObservable();
 
   constructor(
     private router: Router,

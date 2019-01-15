@@ -1,3 +1,16 @@
 .alert{
     border:1px solid red
 }
+
+form {
+    margin-left: 30px;
+}
+
+form button {
+    margin-top: 35px;
+}
+
+input {
+    margin-top: 20px;
+    display: block;
+}

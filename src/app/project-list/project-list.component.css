@@ -8,8 +8,9 @@
 .card {    
     width: 250px;
     height: 250px;
-    margin: 15px;
-    background-color: aqua;   
+    margin: 0 15px;
+    margin-top: 22px;
+    background-color: rgb(186, 216, 189);   
 }
 
 .add{

@@ -1,20 +1,21 @@
 <h2 class="stage-header">Етапи проекту :</h2>
 <div *ngIf = "stages">
-<ul cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  <li class="example-box" *ngFor="let stage of stages; let i=index" cdkDrag>
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <div class="example-box" *ngFor="let stage of stages; let i=index" cdkDrag>
     <app-stages 
       [stage] = "stage"
       [titleProject] = "title"
       [index] = "i"
-      (deleteStage)="deleteStage($event)"      
+      (deleteStage)="deleteStage($event)"    
+      [showEdit]  = true
     ></app-stages>  
-  </li>
-</ul>
+  </div>
+</div>
 
 <app-add-stage
   (addStage) = "addStage($event)">   
 </app-add-stage>
 </div>
 <h3 *ngIf = "!stages">Такого проекта не існує, або був видалений з Local Storage</h3>
-<button class=add-btn routerLink="/"><=</button>
+<button class="add-btn action-button animate blue" routerLink="/"><=</button>
 

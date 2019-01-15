@@ -48,7 +48,7 @@ export class StagesComponent implements OnInit {
   }
 
   edit(stage) {
-    if (this.remixer) {
+    if (this.remixer && this.stage !== stage) {
       this.stage = stage;
       this.data.editStage(this.titleProject, this.index, this.stage);
     }

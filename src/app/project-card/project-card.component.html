@@ -1,8 +1,8 @@
 <div class="card prioritet{{project.projectPriority}}"> 
    <h4 class="title">{{project.projectTitle}}</h4>   
    <p *ngIf = "this.timer < 600">{{this.timer | time}}</p>
-   <button routerLink="projects/{{project.projectTitle}}">=></button>
-   <button appModal (click) = "delete(project.projectTitle)">Delete</button>
+   <button class="in action-button animate blue" routerLink="projects/{{project.projectTitle}}">=></button>
+   <button class="del action-button animate red" appModal (click) = "delete(project.projectTitle)">Delete</button>
 </div>
 
 
