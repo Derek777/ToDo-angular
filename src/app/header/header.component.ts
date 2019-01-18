@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService} from '../_services/data.service';
 import { TimerService } from '../_services/timer.service';
 
@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.dataService.projectsCount.subscribe(data => {
       this.count = data;
     });
-    this.count = this.dataService.getCount(); // number of active projects (0 or number)
+    this.count = this.dataService.getCount();
 
     this.timerService.projectTitle.subscribe(data => {
       this.title = data;

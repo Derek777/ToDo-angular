@@ -9,10 +9,10 @@ import { BehaviorSubject } from 'rxjs';
 export class DataService implements OnInit {
   private name: String = 'My_';
 
-  private projectsCountObject = new BehaviorSubject<any>({} as any); // count in Header
+  private projectsCountObject = new BehaviorSubject<any>({} as any);
   public projectsCount = this.projectsCountObject.asObservable();
 
-  private projectTitlesObject = new BehaviorSubject<any>({} as any); // Titlea array in project-list
+  private projectTitlesObject = new BehaviorSubject<any>({} as any);
   public projectTitles = this.projectTitlesObject.asObservable();
 
   constructor(private DB: LocalStorageService) { }

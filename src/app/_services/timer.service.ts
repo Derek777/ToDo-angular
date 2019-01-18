@@ -11,13 +11,13 @@ export class TimerService {
   private timer = null;
   private date = null;
 
-  private projectsTitles = new BehaviorSubject<any>({} as any); // count in Header
+  private projectsTitles = new BehaviorSubject<any>({} as any);
   public projectTitle = this.projectsTitles.asObservable();
 
-  private projectsTimers = new BehaviorSubject<any>({} as any); // count in Header
+  private projectsTimers = new BehaviorSubject<any>({} as any);
   public projectTimer = this.projectsTimers.asObservable();
 
-  private projectsDates = new BehaviorSubject<any>({} as any); // count in Header
+  private projectsDates = new BehaviorSubject<any>({} as any);
   public projectDate = this.projectsDates.asObservable();
 
   constructor() {}

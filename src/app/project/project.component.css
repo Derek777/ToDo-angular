@@ -26,13 +26,6 @@
   .example-box {
     padding: 20px 10px;
     margin: 7px 0;
-    /* border-bottom: solid 1px #ccc; */
-    /* color: rgba(0, 0, 0, 0.87); */
-    /* display: flex; */
-    /* flex-direction: row;
-    align-items: center;
-    justify-content: space-between; */
-    /* box-sizing: border-box; */
     cursor: move;
     background: white;
     font-size: 14px;

@@ -58,8 +58,4 @@ export class ProjectComponent implements OnInit, OnDestroy {
     this.data.updateProjectStages(this.title, this.stages);
   }
 
-  editStage(oldValue, newValue) {
-    console.log(oldValue + '  ' + newValue)
-  }
-
 }

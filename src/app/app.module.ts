@@ -8,7 +8,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectComponent } from './project/project.component';
-import { TodoItemComponent } from './todo-item/todo-item.component';
 import { DataService} from './_services/data.service';
 import { LocalStorageService } from './_services/local-storage.service';
 import { AddFormComponent } from './add-form/add-form.component';
@@ -23,9 +22,6 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +29,6 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     FooterComponent,
     ProjectListComponent,
     ProjectComponent,
-    TodoItemComponent,
     AddFormComponent,
     StagesComponent,
     ProjectCardComponent,
