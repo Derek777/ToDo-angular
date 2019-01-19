@@ -10,8 +10,8 @@ import { MyValidators } from '../validators';
 })
 export class AddStageComponent implements OnInit {
 
-  private addStageForm: FormGroup;
-  private show = false;
+  public addStageForm: FormGroup;
+  public show = false;
 
   constructor(
     private myValidator: MyValidators,

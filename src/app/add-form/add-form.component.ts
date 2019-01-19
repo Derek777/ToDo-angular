@@ -13,9 +13,9 @@ import { MyValidators } from '../validators';
 
 export class AddFormComponent implements OnInit {
 
-  private newProjectForm: FormGroup;
+  public newProjectForm: FormGroup;
   private show = false;
-  private stages: Array<string>;
+  public stages: Array<string>;
 
   constructor(
     private router: Router,

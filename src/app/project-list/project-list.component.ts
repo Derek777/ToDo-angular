@@ -10,8 +10,8 @@ import { ModalService } from '../_services/modal.service';
 })
 export class ProjectListComponent implements OnInit, AfterViewInit {
 
-  private projects;
-  private projectTitle;
+  public projects;
+  public projectTitle;
 
   constructor(
     private data: DataService,

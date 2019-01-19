@@ -12,7 +12,7 @@ import { TimerService } from '../_services/timer.service';
 export class HeaderComponent implements OnInit, OnDestroy {
 
   private count: Number;
-  private title;
+  public title;
   private deadline;
   private date;
   private timer;

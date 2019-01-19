@@ -11,7 +11,7 @@ import { MyValidators } from '../validators';
 })
 export class StagesComponent implements OnInit {
 
-  private remixer: Boolean = false;
+  public remixer: Boolean = false;
   private input;
 
   constructor(

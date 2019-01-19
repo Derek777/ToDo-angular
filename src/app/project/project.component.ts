@@ -15,7 +15,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
   private title;
   private date;
   private deadline;
-  private stages;
+  public stages;
 
   constructor(
     private data: DataService,

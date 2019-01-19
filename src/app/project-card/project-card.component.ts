@@ -13,7 +13,7 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
 
   constructor(private modalService: ModalService) { }
 
-  private timer;
+  public timer;
   private tiktak;
   private deadline;
 

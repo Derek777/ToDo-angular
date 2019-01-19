@@ -57,6 +57,7 @@ export class DataService implements OnInit {
     updateProject.newStage = stages;
     this.deleteProject(title);
     this.DB.set( this.name + title, updateProject);
+    this.projectsCountObject.next(this.getCount());
   }
 
   deleteProject(projectTitle: string) {
